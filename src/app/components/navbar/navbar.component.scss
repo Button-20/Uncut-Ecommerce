@@ -1,0 +1,104 @@
+.nav-section {
+  margin-inline: 5em;
+}
+
+.nav-bar {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.link-dropdown {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+  font-weight: 600;
+  position: relative;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1em;
+    height: 1em;
+    transform: translateY(-50%);
+  }
+}
+
+.notif {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: var(--secondary-color);
+  width: 1.8em;
+  height: 1.7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8em;
+  border: 2px solid #fff;
+}
+
+.socials {
+  transition: 0.3s;
+
+  &:hover {
+    scale: 1.2;
+  }
+}
+
+.social-dropdown {
+  position: relative;
+
+  .social-dropdown-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      text-decoration: none;
+      color: #000;
+      transition: 0.3s;
+      font-weight: 500;
+      padding: 1em;
+
+      &:nth-of-type(2) {
+        img {
+          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+            brightness(100%) contrast(100%);
+        }
+      }
+
+      img {
+        transition: 0.3s;
+      }
+
+      &:hover {
+        color: var(--primary-color);
+        img {
+          filter: invert(56%) sepia(41%) saturate(390%) hue-rotate(104deg)
+            brightness(92%) contrast(84%);
+        }
+      }
+    }
+  }
+}

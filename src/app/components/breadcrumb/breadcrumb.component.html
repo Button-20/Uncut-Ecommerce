@@ -1,0 +1,22 @@
+<nav aria-label="breadcrumb" class="mb-5">
+  <ol class="breadcrumb fw-bold">
+    <li
+      class="breadcrumb-item"
+      *ngFor="let breadcrumb of titles; let i = index"
+      [ngClass]="{ active: i === titles.length - 1 }"
+    >
+      <a
+        href="#"
+        routerLink="{{ breadcrumb | lowercase }}"
+        class="text-decoration-none text-grey"
+        *ngIf="i !== titles.length - 1"
+      >
+        {{ breadcrumb | titlecase }}
+      </a>
+
+      <span *ngIf="i === titles.length - 1">{{
+        breadcrumb == "products" ? "Home | Products" : (breadcrumb | titlecase)
+      }}</span>
+    </li>
+  </ol>
+</nav>

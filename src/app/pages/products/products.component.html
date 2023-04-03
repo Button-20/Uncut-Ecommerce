@@ -1,0 +1,46 @@
+<div class="row g-0 justify-content-center mx-3">
+  <main class="py-5 col-9">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="d-flex align-item-center justify-content-between me-5 mb-5">
+      <h4 class="mb-0 fw-bolder">All Products</h4>
+      <p class="mb-0 fw-500">
+        Sort By:
+        <a
+          href="#"
+          class="filter-dropdown text-decoration-none position-relative"
+          (click)="selectDropDown($event)"
+        >
+          {{
+            productsService.sortBy === "newest"
+              ? "Newest"
+              : productsService.sortBy === "oldest"
+              ? "Oldest"
+              : productsService.sortBy === "lowest"
+              ? "Price: Low to High"
+              : productsService.sortBy === "highest"
+              ? "Price: High to Low"
+              : ""
+          }}
+          <ul class="filter-dropdown-options">
+            <li class="filter-dropdown-option" (click)="sortBy('newest')">
+              Newest
+            </li>
+            <li class="filter-dropdown-option" (click)="sortBy('oldest')">
+              Oldest
+            </li>
+            <li class="filter-dropdown-option" (click)="sortBy('lowest')">
+              Price: Low to High
+            </li>
+            <li class="filter-dropdown-option" (click)="sortBy('highest')">
+              Price: High to Low
+            </li>
+          </ul>
+        </a>
+      </p>
+    </div>
+    <app-product-card
+      [products]="productsService.products"
+      (addToCart)="addToCart($event)"
+    ></app-product-card>
+  </main>
+</div>

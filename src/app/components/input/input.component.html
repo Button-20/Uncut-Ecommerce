@@ -1,0 +1,44 @@
+<div class="form-input">
+  <label
+    class="form-label fw-500"
+    for="input-{{ label | lowercase }}"
+    [innerHTML]="label"
+  >
+  </label>
+  <input
+    class="form-control"
+    id="input-{{ label | lowercase }}"
+    type="{{ type }}"
+    *ngIf="type !== 'select' && type !== 'textarea'"
+    [placeholder]="placeholder"
+    [name]="name"
+  />
+  <div
+    class="select-dropdown"
+    *ngIf="type === 'select'"
+    (click)="selectDropDown($event)"
+  >
+    <span>
+      {{ value }}
+    </span>
+    <div class="select-dropdown-options">
+      <div
+        class="select-dropdown-option"
+        *ngFor="let option of options"
+        (click)="value = option; selectedOption.emit(option)"
+      >
+        {{ option }}
+      </div>
+    </div>
+  </div>
+  <textarea
+    *ngIf="type === 'textarea'"
+    [name]="name"
+    id="input-{{ label | lowercase }}"
+    class="form-control"
+    cols="30"
+    rows="10"
+    [placeholder]="placeholder"
+    (input)="textAreaInput($event)"
+  ></textarea>
+</div>

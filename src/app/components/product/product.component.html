@@ -1,0 +1,61 @@
+<div class="row g-3">
+  <div class="col-3" *ngFor="let product of products">
+    <div class="card">
+      <div class="col-12 position-relative">
+        <div
+          class="tag"
+          [ngClass]="{
+            'bg-primary': product.availability === 'new_arrival',
+            'bg-secondary': product.availability === 'out_of_stock'
+          }"
+        >
+          {{
+            product.availability === "new_arrival"
+              ? "New Arrival"
+              : product.availability === "out_of_stock"
+              ? "Out of Stock"
+              : ""
+          }}
+        </div>
+        <img [src]="product.image" alt="Product Image" />
+      </div>
+      <div class="col-12 text-center py-2 px-3">
+        <a href="#" class="text-decoration-none text-grey fw-bold">
+          {{ product.category | titlecase }}
+        </a>
+        <h5 class="mb-1 fw-bolder truncate">
+          {{ product.name | titlecase }}
+        </h5>
+        <h3 class="mb-1 fw-bold">
+          {{ product.price | currency: "USD": "symbol" }}
+        </h3>
+        <div class="d-flex align-items-center justify-content-center gap-2">
+          <ngb-rating
+            [(rate)]="product.ratings"
+            [max]="5"
+            [readonly]="true"
+            class="fs-20 text-success"
+          >
+            <ng-template let-fill="fill" let-index="index">
+              <i
+                class="bi bi-star{{
+                  fill === 100 ? '-fill' : fill >= 50 ? '-half' : ''
+                }}"
+                [class.filled]="fill === 100 || fill >= 50"
+                [class.half]="fill >= 50 && fill < 100"
+              ></i>
+            </ng-template>
+          </ngb-rating>
+          <p class="mb-0 text-success">
+            {{ product.no_of_ratings }}
+          </p>
+        </div>
+        <div class="my-3">
+          <button class="cartBtn" (click)="addItemToCart(product)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

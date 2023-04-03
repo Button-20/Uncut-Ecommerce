@@ -1,0 +1,35 @@
+img[alt="Product Image"] {
+  object-fit: cover;
+  width: 8.5em;
+  height: 10em;
+}
+
+.btn-1 {
+  outline: 0;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5em 1em;
+  font-weight: 500;
+  height: 3em;
+}
+
+.order {
+  border: 1.7px solid black;
+  background: transparent;
+}
+
+.order:hover {
+  background: var(--primary-color);
+  color: white;
+  border: 1.7px solid var(--primary-color);
+  transform: scale(1.1);
+}
+
+.details {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5em 1em;
+}
+.details:hover {
+  transform: scale(1.1);
+}

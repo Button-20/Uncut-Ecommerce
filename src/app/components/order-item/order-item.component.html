@@ -1,0 +1,42 @@
+<div class="border p-3 row g-0 justify-content-evenly">
+  <div class="col-1">
+    <img [src]="order?.products?.[0]?.product?.image" alt="Product Image" />
+  </div>
+  <div class="col d-flex align-items-center justify-content-center">
+    <div>
+      <p class="mb-1 text-grey fw-500">Order Number</p>
+      <h6 class="mb-0 fw-bolder fs-16">
+        {{ order?.id }}
+      </h6>
+    </div>
+  </div>
+  <div class="col d-flex align-items-center justify-content-center">
+    <div>
+      <p class="mb-1 text-grey fw-500">Pick-up Date</p>
+      <h6 class="mb-0 fw-bolder fs-16">
+        {{ order?.pickupDate | date : "mediumDate" }} |
+        {{ order?.pickupDate | date : "shortTime" }}
+      </h6>
+    </div>
+  </div>
+  <div class="col d-flex align-items-center justify-content-center">
+    <div>
+      <p class="mb-1 text-grey fw-500">Status</p>
+      <h6 class="mb-0 fw-bolder fs-16">
+        {{ order?.status == "awaiting" ? "Awaiting Pick-up" : "Completed" }}
+      </h6>
+    </div>
+  </div>
+  <div class="col d-flex align-items-center justify-content-center">
+    <div>
+      <p class="mb-1 text-grey fw-500">Order Amount</p>
+      <h6 class="mb-0 fw-bolder fs-16">
+        {{ order?.total | currency : "USD" : "symbol" }}
+      </h6>
+    </div>
+  </div>
+  <div class="col-3 d-flex align-items-center gap-2">
+    <button type="button" class="btn-1 order">Repeat Order</button>
+    <button type="button" class="btn-1 details">View Details</button>
+  </div>
+</div>

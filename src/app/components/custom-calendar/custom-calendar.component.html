@@ -1,0 +1,82 @@
+<div class="form-input position-relative">
+  <label class="form-label fw-500" for="{{ label }}">{{ label }} </label>
+  <div class="d-flex align-items-center">
+    <input
+      class="form-control"
+      id="{{ label }}"
+      type="text"
+      name="{{ label }}"
+      [value]="currentDate"
+      (focus)="showCalendar = true"
+      readonly
+      required
+    />
+    <i class="bi bi-calendar"></i>
+  </div>
+  <div
+    class="calendar row gy-3"
+    [class.d-block]="showCalendar === true"
+    [class.d-none]="showCalendar === false"
+  >
+    <div class="col-12">
+      <div class="calender_header d-flex justify-content-center gap-2">
+        <div class="options" (click)="selectDropDown($event)">
+          {{ months[currentMonth] }}
+          <ul class="months dropdown-options">
+            <li
+              class="dropdown-option"
+              *ngFor="let month of months; index as i"
+              (click)="selectMonth(i + 1)"
+            >
+              {{ month }}
+            </li>
+          </ul>
+        </div>
+        <div class="options" (click)="selectDropDown($event)">
+          {{ currentYear + 1 }}
+          <ul class="years dropdown-options">
+            <li
+              class="dropdown-option"
+              *ngFor="let year of years"
+              (click)="selectYear(year - 1)"
+            >
+              {{ year }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 calendar_body p-2 px-4">
+      <ul class="calendar_header">
+        <li class="calendar_header_item">Mon</li>
+        <li class="calendar_header_item">Tue</li>
+        <li class="calendar_header_item">Wed</li>
+        <li class="calendar_header_item">Thu</li>
+        <li class="calendar_header_item">Fri</li>
+        <li class="calendar_header_item">Sat</li>
+        <li class="calendar_header_item">Sun</li>
+      </ul>
+      <div class="calendar_days">
+        <ul class="calendar_day">
+          <li
+            class="calendar_day_item"
+            *ngFor="let day of days"
+            [class.inactive]="day.disabled"
+            [class.today]="day.today"
+            (click)="setDate(day.date)"
+          >
+            {{ day.date }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 text-center p-2">
+      <button type="button" class="actionBtn cancel" (click)="cancelDate()">
+        Cancel
+      </button>
+      <button type="button" class="actionBtn" (click)="submitDate()">
+        {{ buttonLabel }}
+      </button>
+    </div>
+  </div>
+</div>

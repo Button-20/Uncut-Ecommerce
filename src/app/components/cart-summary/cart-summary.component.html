@@ -1,0 +1,81 @@
+<div class="border shadow-sm">
+  <h4 class="mb-0 fw-bolder p-4 border-bottom">Order Summary</h4>
+  <div
+    class="p-4 border-bottom"
+    *ngIf="cartItems.length !== 0 && router.url.includes('checkout')"
+  >
+    <div
+      class="row g-0 gap-2 justify-content-between p-2 border mb-3"
+      *ngFor="let cartItem of cartItems"
+    >
+      <div class="col-3">
+        <img
+          [src]="cartItem.product.image"
+          alt="Product Image"
+          class="cart-item-img"
+        />
+      </div>
+      <div class="col-8">
+        <h6 class="mb-1 fw-bolder">
+          {{ cartItem?.product?.name }}
+        </h6>
+        <p class="mb-1 text-grey fw-500">
+          Weight:
+          {{ cartItem?.product?.weight }}
+        </p>
+        <p class="mb-1 text-grey fw-500">
+          Category: {{ cartItem?.product?.category | titlecase }}
+        </p>
+        <p class="mb-1 text-grey fw-500">Quantity: {{ cartItem?.quantity }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="mx-4">
+    <div class="py-3 border-bottom">
+      <form class="d-flex justify-content-between gap-2">
+        <input
+          type="text"
+          name="coupon_code"
+          placeholder="Enter Coupon Code"
+          class="form-input"
+        />
+        <button class="applyBtn" type="submit">Apply</button>
+      </form>
+    </div>
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <p class="mb-0 fw-bolder fs-18">Item Subtotal ({{ cartItems.length }})</p>
+      <p class="mb-0 fw-500 fs-18 text-grey">
+        {{ subTotal | currency : "USD" : "symbol" }}
+      </p>
+    </div>
+    <div
+      class="d-flex align-items-center justify-content-between py-3 border-bottom"
+    >
+      <p class="mb-0 fw-bolder fs-18">Delivery</p>
+      <p class="mb-0 fw-500 fs-18 text-grey">In-Store Pickup</p>
+    </div>
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <p class="mb-0 fw-bolder fs-18">Estimated Tax</p>
+      <p class="mb-0 fw-500 fs-18 text-grey">
+        {{ tax | currency : "USD" : "symbol" }}
+      </p>
+    </div>
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <p class="mb-0 fw-bolder fs-18">Total</p>
+      <p class="mb-0 fw-500 fs-18 text-grey">
+        {{ total | currency : "USD" : "symbol" }}
+      </p>
+    </div>
+    <button
+      class="applyBtn w-100 mb-4"
+      (click)="checkout(
+        cartItems,
+        subTotal,
+        tax,
+        total
+      )"
+    >
+      Checkout
+    </button>
+  </div>
+</div>

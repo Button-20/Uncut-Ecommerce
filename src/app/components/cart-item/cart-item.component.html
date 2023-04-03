@@ -1,0 +1,59 @@
+<div class="col-12">
+  <div class="row g-4 pb-3 border-bottom">
+    <div class="col-3">
+      <img [src]="cart?.product?.image" alt="Product Image" />
+    </div>
+    <div class="col-9 d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h5 class="mb-0 fw-bolder">
+            {{ cart?.product?.name }}
+          </h5>
+          <h5 class="mb-0 fw-bolder">
+            {{ cart?.product?.price | currency : "USD" : "symbol" }}
+          </h5>
+        </div>
+        <p class="mb-2 text-grey fw-500">
+          Weight:
+          {{ cart?.product?.weight }}
+        </p>
+        <p class="mb-2 text-grey fw-500">
+          Category: {{ cart?.product?.category | titlecase }}
+        </p>
+      </div>
+      <div class="d-flex align-items-end justify-content-between">
+        <div class="qty-dropdown" (click)="selectDropdown($event)">
+          <p class="mb-0 fw-bolder">
+            {{ cart?.quantity }}
+          </p>
+          <div class="qty-dropdown-options">
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              1
+            </div>
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              2
+            </div>
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              3
+            </div>
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              4
+            </div>
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              5
+            </div>
+            <div class="qty-dropdown-option" (click)="addQuantity($event)">
+              6
+            </div>
+          </div>
+        </div>
+        <button
+          class="text-grey d-flex align-items-end removeBtn fw-500"
+          (click)="removeFromCart.emit(cart)"
+        >
+          <i class="bi bi-x"></i> Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="row g-0 justify-content-center mx-3">
+  <main class="py-5 col-9">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="row gap-5">
+      <div class="col-7">
+        <app-checkout-form></app-checkout-form>
+      </div>
+      <div class="col-4">
+        <app-cart-summary [cartItems]="cartsService.cart"></app-cart-summary>
+        <p class="mb-0 text-grey text-center mt-3 fw-500">
+          <i class="bi bi-chat-left text-primary"></i> Need help?
+          <a href="#" class="text-decoration-none text-primary">Chat Now</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>

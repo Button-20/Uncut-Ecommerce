@@ -1,0 +1,13 @@
+.links-margin {
+  margin-inline: 10em;
+}
+
+.socials {
+  filter: invert(56%) sepia(41%) saturate(390%) hue-rotate(104deg)
+    brightness(92%) contrast(84%);
+  transition: 0.3s;
+
+  &:hover {
+    scale: 1.2;
+  }
+}

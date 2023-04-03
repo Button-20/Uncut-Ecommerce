@@ -1,0 +1,82 @@
+<div class="row g-0">
+  <div class="col-12 bg-dark p-2">
+    <div class="row g-0 nav-section justify-content-center">
+      <div class="col-5">
+        <p class="mb-0 text-white">
+          <img src="assets/truck.png" alt="truck img" width="20" class="me-1" />
+          <small class="fw-bold">FREE IN-STORE PICKUP</small>
+        </p>
+      </div>
+      <div class="col-3">
+        <div class="d-flex align-items-center gap-5">
+          <a href="#" class="text-decoration-none text-white">Pick Up</a>
+          <a href="#" class="text-decoration-none text-white">FAQ</a>
+          <a href="#" class="text-decoration-none text-white"
+            ><img
+              src="assets/phone.png"
+              alt="phone icon"
+              width="15"
+              class="me-1"
+            />(617) 775-7865</a
+          >
+        </div>
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center gap-4">
+        <a href="#" class="text-decoration-none socials"
+          ><img src="assets/facebook.png" alt="facebook logo" width="20"
+        /></a>
+        <a href="#" class="text-decoration-none socials"
+          ><img src="assets/twitter.png" alt="twitter logo" width="20"
+        /></a>
+        <a href="#" class="text-decoration-none socials"
+          ><img src="assets/instagram.png" alt="instagram logo" width="20"
+        /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 p-2 nav-bar">
+    <div class="row g-0 nav-section justify-content-center">
+      <div class="col-8 d-flex align-items-center gap-5">
+        <a href="#" routerLink="/">
+          <img src="assets/II_LOGO 3.png" alt="logo" width="30" />
+        </a>
+        <a href="#" class="link-dropdown ms-5"> Shop </a>
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center gap-5">
+        <a
+          href="#"
+          class="text-decoration-none position-relative socials"
+          routerLink="/products/shopping-cart"
+          ><img src="assets/shopping-bag.png" alt="twitter logo" width="23" />
+          <span class="notif" *ngIf="cartsService.cart.length > 0"
+            >{{ cartsService.cart.length }}
+          </span>
+        </a>
+        <a
+          href="#"
+          class="text-decoration-none ms-3 social-dropdown"
+          (click)="selectDropDown($event)"
+          ><img src="assets/Group 1.png" alt="instagram logo" width="23" />
+          <div class="social-dropdown-options">
+            <a href="#" class="text-decoration-none">
+              <img src="assets/user.png" alt="user logo" width="20" />
+              Account
+            </a>
+            <a
+              href="#"
+              class="text-decoration-none"
+              (click)="navigate('/products/orders', $event)"
+            >
+              <img src="assets/layout-list.png" alt="heart logo" width="20" />
+              Orders
+            </a>
+            <a href="#" class="text-decoration-none">
+              <img src="assets/log-out.png" alt="heart logo" width="20" />
+              Log out
+            </a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
